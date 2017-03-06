@@ -18,5 +18,18 @@ def create():
     mysql.run_mysql_query(query)
     return redirect('/')
 
+@app.route('/friends/<id>/edit', methods=['GET'])
+def edit(id):
+    friend = mysql.fetch('SELECT * FROM friends WHERE id={}'.format(id))
+    return render_template('friends.html', friend=friend)
+
+@app.route('/friends/<id>', methods=['POST'])
+def update(id):
+    first_name = request.form['first_name']
+    last_name = request.form['last_name']
+    hometown = request.form['hometown']
+    update = "UPDATE friends SET first_name='{}', last_name='{}', hometown='{}', updated_at=NOW() WHERE id={}".format(first_name, last_name, hometown, id)
+    mysql.run_mysql_query(update)
+
 
 app.run(debug=True)

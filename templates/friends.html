@@ -8,7 +8,26 @@
 </head>
 <body>
   <div id="container">
-    <h1>My Friend</h1>
+    <h1>My Friend {{friend[0]['first_name']}}</h1>
+    <table>
+      <thead>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Hometown</th>
+      </thead>
+      <tfoot>
+        <tr>
+          {% for col in friend %}
+            <form action="/friends/{{ col['id'] }}" method="post">
+              <td><input type="text" name="first_name" value="{{ col['first_name'] }}"></td>
+              <td><input type="text" name="last_name" value="{{ col['last_name']}}"></td>
+              <td><input type="text" name="hometown" value="{{ col['hometown']}}"></td>
+              <td><input type="submit" value="update"></td>
+            </form>
+          {% endfor %}
+        </tr>
+      </tfoot>
+    </table>
   </div>
 </body>
 </html>

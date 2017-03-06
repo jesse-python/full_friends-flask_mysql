@@ -21,6 +21,11 @@
           <td>{{ friend['first_name']}}</td>
           <td>{{ friend['last_name']}}</td>
           <td>{{ friend['hometown']}}</td>
+          <td>
+            <form action="/friends/{{friend['id']}}/edit" method="get">
+              <button type="hidden" method="get">Edit Friend</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tfoot>
