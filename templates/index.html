@@ -26,6 +26,11 @@
               <button type="hidden" method="get">Edit Friend</button>
             </form>
           </td>
+          <td>
+            <form action="/friends/{{friend['id']}}/delete" method="post">
+              <button type="hidden" method="post">Delete Friend</button>
+            </form>
+          </td>
         </tr>
         {% endfor %}
       </tfoot>
