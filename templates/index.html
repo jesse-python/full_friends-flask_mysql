@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Friends!</title>
 </head>
 <body>
   <div id="container">
@@ -15,7 +15,23 @@
         <th>Last Name</th>
         <th>Hometown</th>
       </thead>
+      <tfoot>
+        {% for friend in friends: %}
+        <tr>
+          <td>{{ friend['first_name']}}</td>
+          <td>{{ friend['last_name']}}</td>
+          <td>{{ friend['hometown']}}</td>
+        </tr>
+        {% endfor %}
+      </tfoot>
     </table>
+      <form action="/friends" method="post">
+        <h1>Add Friend</h1>
+        First Name: <input type="text" name="first_name">
+        Last Name: <input type="text" name="last_name">
+        Hometown: <input type="text" name="hometown">
+        <input type="submit" value="Add Friend">
+      </form>
   </div>
 </body>
 </html>
