@@ -30,6 +30,7 @@ def update(id):
     hometown = request.form['hometown']
     update = "UPDATE friends SET first_name='{}', last_name='{}', hometown='{}', updated_at=NOW() WHERE id={}".format(first_name, last_name, hometown, id)
     mysql.run_mysql_query(update)
+    return redirect('/')
 
 @app.route('/friends/<id>/delete', methods=['POST'])
 def destroy(id):
